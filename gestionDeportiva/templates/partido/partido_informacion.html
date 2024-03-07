@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container mt-5">
+    
+    
+
+    <!-- Detalles del equipo -->
+   
+    <div class="equipo-details">
+      <h2>Detalles del Partido</h2>
+      <ul>
+        <li><strong>Id:</strong> {{ partido.id_partido }}</li>
+        <li><strong>Deporte:</strong> {{ partido.id_deporte.nombre }}</li>
+        <li><strong>Fecha y hora:</strong> {{ partido.fecha_hora }}</li>
+        <li><strong>id_instalacion:</strong> {{ partido.id_instalacion.nombre }}</li>
+        <li><strong>Equipo Local:</strong> {{ partido.id_local.nombre }}</li>
+        <li><strong>Equipo Visitante:</strong> {{ partido.id_visitante.nombre }}</li>
+        <li><strong>Puntos local:</strong> {{ partido.puntos_local }}</li>
+        <li><strong>Puntos visitante:</strong> {{ partido.puntos_visitante }}</li>
+        <li><strong>Observaciones:</strong> {{ partido.observaciones }}</li>
+              
+        <!-- Agrega más campos según sea necesario -->
+      </ul>
+    </div>
+    <a href="{% url 'gestioDeportiva:listado_partidos' %}" class="btn btn-outline-secondary">Volver</a>
+
+
+{% endblock %}

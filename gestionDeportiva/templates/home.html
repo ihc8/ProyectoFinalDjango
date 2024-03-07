@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% load static %} 
+
+{% block content %}
+  
+
+  <div class="row">
+    
+    <div class="col-md-6">
+      <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false" style="max-width: 400px; max-height: 400px;">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="{% static 'img/austris-augusts-52p1K0d0euM-unsplash.jpg' %}" class="d-block w-100" alt="Imagen 1">
+          </div>
+          <div class="carousel-item">
+            <img src="{% static 'img/john-arano-h4i9G-de7Po-unsplash.jpg' %}" class="d-block w-100" alt="Imagen 2">
+          </div>
+          <div class="carousel-item">
+            <img src="{% static 'img/victor-freitas-qZ-U9z4TQ6A-unsplash.jpg' %}" class="d-block w-100" alt="Imagen 3">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+
+   
+    <div class="col-md-6">
+      <h2 style="text-align: center;">Últimos 5 partidos jugados</h2>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Fecha</th>
+            <th scope="col">Equipo Local</th>
+            <th scope="col">Equipo Visitante</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for partido in ultimos_partidos %}
+            <tr>
+              <td>{{ partido.fecha_hora|date:"d-m-Y" }}</td>
+              <td>{{ partido.id_local.nombre }}</td>
+              <td>{{ partido.id_visitante.nombre }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Tabla de próximos partidos por jugar -->
+  <div class="row">
+    <div class="col-md-12">
+      <h2 style="text-align: center;">Próximos 5 partidos por jugar</h2>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Fecha</th>
+            <th scope="col">Equipo Local</th>
+            <th scope="col">Equipo Visitante</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for partido in proximos_partidos %}
+            <tr>
+              <td>{{ partido.fecha_hora|date:"d-m-Y" }}</td>
+              <td>{{ partido.id_local.nombre }}</td>
+              <td>{{ partido.id_visitante.nombre }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+{% endblock %}

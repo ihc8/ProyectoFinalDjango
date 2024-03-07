@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container mt-5">
+    <h1 class="mb-4">{{ equipo.nombre }}</h1>
+
+   
+    <div class="equipo-details">
+      <h2>Detalles del Equipo</h2>
+      
+      <ul>
+        <li><strong>ID Deporte:</strong> {{ equipo.id_equipo }}</li>
+        <li><strong>Equipo:</strong> {{ equipo.nombre }}</li>
+        <li><strong>Deporte:</strong> {{ equipo.id_deporte.nombre }}</li>
+        <li><strong>Equipación principal:</strong> {{ equipo.equipacion_principal }}</li>
+        <li><strong>Equipación Suplente:</strong> {{ equipo.equipacion_suplente }}</li>
+        <li><strong>Contacto:</strong> {{ equipo.contacto }}</li>
+        <li><strong>Télefono:</strong> {{ equipo.telefono }}</li>
+        <li><strong>Correo electrónico:</strong> {{ equipo.email }}</li>
+       
+      </ul>
+    </div>
+
+   
+    <div class="jugadores-list">
+      <h2>Jugadores del Equipo</h2>
+      <ul>
+        {% for jugador in equipo.jugador_set.all %}
+          <li><strong>Dorsal: {{ jugador.dorsal }}</strong> {{ jugador.nombre }} {{ jugador.apellido1 }} {{ jugador.apellido2 }} </li>
+         
+        {% empty %}
+          <li>No hay jugadores en este equipo</li>
+        {% endfor %}
+      </ul>
+    </div>
+    <a href="{% url 'gestioDeportiva:crear_jugador' %}" class="btn btn-outline-success">Añadir</a>
+   
+    <a href="{% url 'gestioDeportiva:listado_equipos' %}" class="btn btn-outline-secondary">Volver atrás</a>
+  </div>
+ 
+
+{% endblock %}

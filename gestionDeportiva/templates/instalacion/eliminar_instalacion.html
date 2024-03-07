@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container mt-5">
+    <h1 class="mb-4">Eliminar Instalacion</h1>
+    
+    <p>¿Estás seguro de que quieres eliminar el Instalacion "{{ instalacion.nombre }}con id:{{instalacion.id_instalacion}}"?</p>
+    
+    <form method="post">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-outline-danger">Eliminar</button>
+      <a href="{% url 'gestioDeportiva:listado_instalaciones' %}" class="btn btn-outline-secondary">Cancelar</a>
+
+    </form>
+  </div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container mt-5">
+    <h1 class="mb-4">{{ jugador.nombre }}</h1>
+
+
+    <div class="jugador-details">
+      <h2>Detalles del Equipo</h2>
+      
+      <ul>
+        <li><strong>ID Jugador:</strong> {{ jugador.id_jugador }}</li>
+        <li><strong>Nombre:</strong> {{ jugador.nombre }}</li>
+        <li><strong>Primer Apellido:</strong> {{ jugador.apellido1 }}</li>
+        <li><strong>Segundo Apellido:</strong>{{jugador.apellido2}}</li>
+        <li><strong>Equipo:</strong> {{ jugador.id_equipo.nombre }}</li>
+        <li><strong>Dorsal:</strong> {{ jugador.dorsal }}</li>
+        <li><strong>Fecha nacimiento:</strong> {{jugador.fecha_nacimiento }}</li>
+        <li><strong>Altura:</strong> {{ jugador.altura }}</li>
+        <li><strong>Peso:</strong> {{ jugador.peso}}</li>
+        <li><strong>Teléfono:</strong> {{ jugador.telefono}}</li>
+       
+      </ul>
+    </div>
+    <a href="{% url 'gestioDeportiva:listado_jugadores' %}" class="btn btn-outline-secondary">Volver atrás</a>
+
+   
+   
+
+{% endblock %}
